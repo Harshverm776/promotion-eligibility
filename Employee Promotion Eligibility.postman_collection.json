@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "51a2016e-12d8-4054-b1cf-76f318ec6e92",
+		"name": "Employee Promotion Eligibility",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15178255"
+	},
+	"item": [
+		{
+			"name": "Employee Service",
+			"item": [
+				{
+					"name": "createEmployee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Thaqi\",\r\n    \"age\": 30,\r\n    \"gender\": \"MALE\",\r\n    \"address\": \"Indore, MP\",\r\n    \"isActive\": \"Y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEmployee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employee?employeeId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employee"
+							],
+							"query": [
+								{
+									"key": "employeeId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEmployee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeId\": 34,\r\n    \"name\": \"Harsh\",\r\n    \"age\": 24,\r\n    \"gender\": \"MALE\",\r\n    \"address\": \"Indore, MP\",\r\n    \"isActive\": \"N\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employee"
+							],
+							"query": [
+								{
+									"key": " ",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readAllEmployee",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "updateIsActive",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employee/1?isActive=Y",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employee",
+								"1"
+							],
+							"query": [
+								{
+									"key": "isActive",
+									"value": "Y"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HCM Service",
+			"item": [
+				{
+					"name": "createHcm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeId\": 6,\r\n    \"experience\": 10,\r\n    \"yearsInCurrentRole\": 4,\r\n    \"goalCompletedForCurrentYear\": \"Y\",\r\n    \"clientAppreciationForCurrentYear\": \"Y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/hcm",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"hcm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateHcm",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeId\": 2,\r\n    \"experience\": 3,\r\n    \"yearsInCurrentRole\": 2,\r\n    \"goalCompletedForCurrentYear\": \"Y\",\r\n    \"clientAppreciationForCurrentYear\": \"Y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/hcm",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"hcm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readHcmById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/hcm/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"hcm",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readAllHcm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/hcm",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"hcm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promotion Service",
+			"item": [
+				{
+					"name": "isEligible",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/promotion?employeeId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"promotion"
+							],
+							"query": [
+								{
+									"key": "employeeId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News Service",
+			"item": [
+				{
+					"name": "newsProducer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"severity\": 3,\r\n    \"reason\": \"US RECESSION IMPACT\",\r\n    \"forceTermination\": \"Y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/news",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
