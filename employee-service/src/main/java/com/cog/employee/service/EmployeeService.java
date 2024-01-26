@@ -15,6 +15,8 @@ public interface EmployeeService {
 	
 	Integer updateEmployee(Employee employee);
 	
+	List<EmployeeResponse> getAllEmployee();
+	
 	List<EmployeeResponse> readAllEmployee(IsActive isActive);
 
 	void updateIsActive(Integer employeeId, IsActive isActive);

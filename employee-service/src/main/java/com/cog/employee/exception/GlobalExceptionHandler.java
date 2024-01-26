@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.cog.employee.domain.ErrorResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 	
 	@ExceptionHandler({EmployeeNotFoundException.class})
@@ -45,6 +48,7 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler({Exception.class})
 	public ResponseEntity<ErrorResponse> genericException(Exception ex, HttpServletRequest request) {
+		log.error("Exception occured : ", ex);
 		return new ResponseEntity<>(
 				ErrorResponse.builder()
 				.errorMessage(ex.getLocalizedMessage()) 

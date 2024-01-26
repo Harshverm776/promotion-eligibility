@@ -45,6 +45,16 @@ public class EmployeeController {
 	public ResponseEntity<Integer> updateEmployee(@RequestBody @Valid Employee employee) {
 		return new ResponseEntity<>(employeeService.updateEmployee(employee), HttpStatus.OK);
 	}
+	
+	/**
+	 * Get All Employees 
+	 * @param isActive
+	 * @return {@link EmployeeResponse}
+	 */
+	@GetMapping("/all")
+	public ResponseEntity<List<EmployeeResponse>> getAllEmployee() {
+		return new ResponseEntity<>(employeeService.getAllEmployee(), HttpStatus.OK) ;
+	}
 
 	@GetMapping
 	public ResponseEntity<List<EmployeeResponse>> readAllEmployee(@RequestParam IsActive isActive) {

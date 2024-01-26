@@ -3,6 +3,8 @@ package com.cog.employee.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
+import com.cog.employee.converter.EmployeeConverter;
 import com.cog.employee.domain.EmployeeResponse;
 import com.cog.employee.domain.IsEligibleForPromotion;
 import com.cog.employee.entity.Employee;
@@ -28,6 +31,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private EmployeeConverter employeeConverter;
 	
 	
 	@Value("${GET_ISELIGIBLE_ENDPOINT_URL}")
@@ -48,6 +54,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		else
 			employeeRepository.deleteByIsActive(IsActive.N);
 		log.info("Employee deleted successfully");
+	}
+	
+	@Override
+	public List<EmployeeResponse> getAllEmployee() {
+		List<Employee> employees = employeeRepository.findAll();
+		if(!employees.isEmpty()) {
+			return employees.stream().map(employeeConverter::convertToDto).collect(Collectors.toList());
+		} else {
+			throw new EmployeeNotFoundException("Employees are not present");
+		}
 	}
 
 	@Override
